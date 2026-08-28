@@ -9,6 +9,7 @@ import ArtClasses from './pages/ArtClasses';
 import BuyOnline from './pages/BuyOnline';
 import Store from './pages/Store';
 import Blog from './pages/Blog';
+import ExpandedOrderForm from "./pages/ExpandedOrderForm"
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/art-classes" element={<ArtClasses />} />
+          <Route path="/expanded-order-form" element={<ExpandedOrderForm />} />
         </Routes>
       </Layout>
     </Router>
