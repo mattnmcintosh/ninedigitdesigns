@@ -1,0 +1,112 @@
+/* src/index.css */
+
+/* =========================================
+   1. COLOR PALETTE (Purple & Bright Accents)
+   ========================================= */
+:root {
+  /* Core Theme Colors */
+  --main-purple: #6a1b9a;       /* Deep, rich purple for primary branding */
+  --bright-magenta: #f50057;    /* Bright pink/magenta for secondary accents */
+  --bright-teal: #00e5ff;       /* Vibrant cyan/teal for contrasting pops of color */
+
+  /* Backgrounds */
+  --site-bg: #f8f6fa;           /* Very faint lavender-grey background */
+  --content-bg: #ffffff;        /* Pure white for content areas and cards */
+  
+  /* Text */
+  --text-main: #333333;         /* Dark grey for readable body text */
+  --text-heading: var(--main-purple); 
+  --text-muted: #7a6ba1;        /* Muted purple-grey for secondary text */
+  
+  /* Interactive Elements */
+  --link-color: var(--main-purple);
+  --link-hover: var(--bright-magenta);
+  --border-light: #e6dbe8;      /* Soft purple-tinted borders */
+}
+
+/* =========================================
+   2. GLOBAL HTML & TYPOGRAPHY
+   ========================================= */
+body {
+  background-color: var(--site-bg);
+  color: var(--text-main);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Force all headings (including MUI variants) to use the new Purple & Serif */
+h1, h2, h3, h4, h5, h6, 
+.MuiTypography-h1, .MuiTypography-h2, .MuiTypography-h3, 
+.MuiTypography-h4, .MuiTypography-h5, .MuiTypography-h6 {
+  font-family: Georgia, "Times New Roman", serif !important;
+  color: var(--text-heading) !important;
+  font-weight: normal;
+}
+
+/* Standardize links across the app */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================
+   3. MATERIAL-UI COMPONENT OVERRIDES
+   ========================================= */
+/* Flatten MUI Papers and add a subtle colorful top border */
+.MuiPaper-root {
+  background-color: var(--content-bg) !important;
+  border-radius: 0 !important; 
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.08) !important; /* Soft purple shadow */
+  border-top: 3px solid var(--bright-teal) !important; /* Bright teal accent line */
+}
+
+/* Style MUI Cards for the Gallery */
+.MuiCard-root {
+  border: 1px solid var(--border-light) !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border-top: none !important; /* Removes the top border from individual art cards */
+  transition: transform 0.2s ease, border-color 0.2s ease !important;
+}
+
+.MuiCard-root:hover {
+  border-color: var(--bright-magenta) !important;
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Update MUI Buttons to use the vibrant palette */
+.MuiButton-containedPrimary {
+  background-color: var(--main-purple) !important;
+  color: #ffffff !important;
+  text-transform: none !important;
+  border-radius: 2px !important;
+  font-weight: bold !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.MuiButton-containedPrimary:hover {
+  background-color: var(--bright-magenta) !important;
+}
+
+/* Force the MUI AppBar (Header) to match the new vibe */
+.MuiAppBar-root {
+  background-color: var(--content-bg) !important;
+  color: var(--main-purple) !important;
+  box-shadow: 0 2px 8px rgba(106, 27, 154, 0.1) !important;
+  border-bottom: 2px solid var(--bright-magenta) !important; /* Bright magenta separator */
+}
