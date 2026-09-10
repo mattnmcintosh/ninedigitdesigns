@@ -17,7 +17,7 @@ export default function Home() {
         <li><Typography component="a" href="/contact">Contact</Typography></li>
         <li><Typography component="a" href="/expanded-order-form">Expanded Order Form</Typography></li>
         <li><Typography component="a" href="/find-my-art">Find My Art</Typography></li>
-        <li><Typography component="a" href="/page">Gallery</Typography></li>
+        <li><Typography component="a" href="/gallery">Gallery</Typography></li>
         <li><Typography component="a" href="/store">Print Prices and Sizes</Typography></li>
       </ul>
     </Box>

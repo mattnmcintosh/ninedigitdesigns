@@ -1,32 +1,43 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import About from './pages/About';
-import Gallery from './pages/Gallery';
-import Contact from './pages/Contact';
-import ArtClasses from './pages/ArtClasses';
-import BuyOnline from './pages/BuyOnline';
-import Store from './pages/Store';
-import Blog from './pages/Blog';
-import ExpandedOrderForm from "./pages/ExpandedOrderForm"
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CircularProgress, Box } from '@mui/material';
+import './index.css';
+
+// Lazy load pages for optimal bundle splitting
+const Gallery = lazy(() => import('./pages/Gallery'));
+const ArtClasses = lazy(() => import('./pages/ArtClasses'));
+const Store = lazy(() => import('./pages/Store'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Contact = lazy(() => import('./pages/Contact'));
+const ExpandedOrderForm = lazy(() => import('./pages/ExpandedOrderForm'));
+const Layout = lazy(() => import('./components/Layout'));
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const FindMyArt = lazy(() => import('./pages/FindMyArt'));
 
 export default function App() {
   return (
-    <Router>
-      <Layout>
+    <BrowserRouter>
+      <Suspense fallback={
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10 }}>
+          <CircularProgress />
+        </Box>
+      }>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/page" element={<Gallery />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/buy-online" element={<BuyOnline />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/art-classes" element={<ArtClasses />} />
-          <Route path="/expanded-order-form" element={<ExpandedOrderForm />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="gallery" element={<Gallery />} />
+            <Route path="art-classes" element={<ArtClasses />} />
+            <Route path="print-prices-and-sizes" element={<Store />} />
+            <Route path="store" element={<Store />} />
+            <Route path="blog" element={<Blog />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
+            <Route path="find-my-art" element={<FindMyArt />} />
+            <Route path="expanded-order-form" element={<ExpandedOrderForm />} />
+          </Route>
         </Routes>
-      </Layout>
-    </Router>
+      </Suspense>
+    </BrowserRouter>
   );
 }

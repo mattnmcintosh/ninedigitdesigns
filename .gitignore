@@ -7,8 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
+node_modules/
+dist/
 dist-ssr
 *.local
 
@@ -25,3 +25,22 @@ dist-ssr
 
 #Tokens
 .env
+
+# Local Netlify folder
+.netlify/
+
+#Asset folders for organization
+/gallery-images/*
+
+build/
+
+# Media and WordPress exports
+public/wp-content/uploads/
+tam-media-export/
+tam-media-export.tar
+*.tar
+*.xml
+
+# Environment and temp files
+.env
+test-temp-env.js
