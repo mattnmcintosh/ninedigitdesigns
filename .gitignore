@@ -44,3 +44,14 @@ tam-media-export.tar
 # Environment and temp files
 .env
 test-temp-env.js
+
+# Additional big files
+node_modules/
+.netlify/
+dist/
+public/wp-content/uploads/
+tam-media-export/
+tam-media-export.tar
+*.tar
+*.xml
+.env
