@@ -50,3 +50,25 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
 }
+
+/* src/index.css */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Specific overrides for WordPress block galleries and content wrappers */
+.wp-block-gallery, 
+.blocks-gallery-grid, 
+.wp-block-image {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.wp-block-gallery img,
+.blocks-gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

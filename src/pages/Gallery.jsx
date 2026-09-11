@@ -1,25 +1,24 @@
 // src/pages/Gallery.jsx
 import React from 'react';
 import wpData from '../data/wordpressContent.json';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 
 export default function Gallery() {
-  const page = wpData.find((item) => item.slug === 'gallery' || item.slug === 'page');
-
-  if (!page) {
-    return (
-      <Container sx={{ py: 4 }}>
-        <Typography>Gallery page content not found in local data.</Typography>
-      </Container>
-    );
-  }
+  const dataArray = Array.isArray(wpData) ? wpData : wpData?.default || [];
+  const page = dataArray.find((item) => item && (item.slug === 'gallery' || item.slug === 'page'));
 
   return (
-    <Container sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h3" gutterBottom>
-        {page.title}
+        Gallery
       </Typography>
-      <div dangerouslySetInnerHTML={{ __html: page.content }} />
+      {page && page.content ? (
+        <div dangerouslySetInnerHTML={{ __html: page.content }} />
+      ) : (
+        <Box>
+          <Typography variant="body1">No gallery content found in local data.</Typography>
+        </Box>
+      )}
     </Container>
   );
 }

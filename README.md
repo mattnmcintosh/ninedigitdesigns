@@ -1,16 +1,37 @@
-# React + Vite
+# 9 Digit Designs — Enterprise SPA Migration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance single-page application (SPA) migrated from an unstable WordPress runtime architecture to a decoupled, resilient React & Vite frontend hosted globally on Netlify. 
 
-Currently, two official plugins are available:
+## 🏗️ Architectural Overview & Engineering Decisions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project was engineered to solve critical production failures inherent in traditional tightly-coupled CMS hosting:
+* **Elimination of Runtime Fragility:** Moved away from unstable serverless API proxying that suffered from path-resolution errors and third-party script injection (e.g., WordPress marketing bars).
+* **Decoupled Static Data Model:** Converted raw WordPress WXR XML exports into structured, locally managed JSON payloads (`src/data/wordpressContent.json`), achieving lightning-fast load times and zero external network dependencies for page rendering.
+* **Global Edge Hosting:** Deployed via Netlify with automated CI/CD validation pipelines, secure asset caching, and native client-side routing.
 
-## React Compiler
+## 🔒 Security & Resiliency
+* **Attack Surface Reduction:** Stripped out unvalidated remote script injections and dynamic rendering loops, ensuring zero unauthorized external execution vectors.
+* **Graceful Degradation:** Implemented defensive rendering checks and fallback states across data consumers to prevent white-screen crashes on missing payloads.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚡ Performance & Optimization
+* **Optimized Bundling:** Leveraged Vite for lightning-fast module hot replacement (HMR) and highly optimized tree-shaking during production builds.
+* **Asset Integrity:** Decoupled media handling from runtime API constraints to ensure consistent asset delivery speeds.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React 18, Vite, Material-UI (MUI)
+* **Data Layer:** Local JSON / Static Asset Bundling
+* **Testing & Quality:** Vitest, React Testing Library
+* **Deployment & CI/CD:** Netlify, GitHub Actions
+
+## 🚀 Getting Started Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/ninedigitdesigns.git](https://github.com/your-username/ninedigitdesigns.git)
+   cd ninedigitdesigns
+
+Install dependencies: npm install
+Run the development server: npm run dev
+Run the test suite: npx vitest run
+Build for production: npm run build
